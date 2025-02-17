@@ -1,10 +1,10 @@
 # Site settings
-title:       Pixyll
-email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+title:       Blogjak
+email:       wap.youdi@gmail.com
+author:      Whyudi
+description: "A blogger from Jakarta to Purwokerto."
 baseurl:     ""
-url:         "https://pixyll.com"
+url:         "blogjak.github.io"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
