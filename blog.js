@@ -48,7 +48,7 @@ function initSearch() {
                 searchResults.innerHTML = results.map(post => {
                     const postDate = new Date(post.date);
                     const slug = createSlug(post.title);
-                    const url = `/${postDate.getFullYear()}/${String(postDate.getMonth() + 1).padStart(2, '0')}/${String(postDate.getDate()).padStart(2, '0')}/${slug}.html`;
+                    const url = `https://blogjak.github.io/${postDate.getFullYear()}/${String(postDate.getMonth() + 1).padStart(2, '0')}/${String(postDate.getDate()).padStart(2, '0')}/${slug}.html`;
                     
                     return `<a href="${url}">${post.title} <small>(${postDate.toLocaleDateString()})</small></a>`;
                 }).join('');
@@ -112,7 +112,7 @@ async function loadBlogPosts() {
                 const month = String(postDate.getMonth() + 1).padStart(2, '0');
                 const day = String(postDate.getDate()).padStart(2, '0');
                 const slug = createSlug(post.title);
-                const postUrl = `/${year}/${month}/${day}/${slug}.html`;
+                const postUrl = `https://blogjak.github.io/${year}/${month}/${day}/${slug}.html`;
                 
                 return `
                     <article class="blog-card">
