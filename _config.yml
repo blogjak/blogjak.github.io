@@ -2,11 +2,11 @@
 # Blogjak Theme Versi 3.0 — Konfigurasi Jekyll
 # ============================================
 
-title: "Blogjak Theme"
-tagline: "Versi 3 - Pure Markdown Blogging Platform"
-description: "Tema Jekyll native lengkap dengan dark mode, gallery grid, search, related posts, kategori, tag, dan SEO."
-author: "Blogjak"
-email: "hello@blogjak.dev"
+title: "Blogjak"
+tagline: "Bukan Blogger Jakarta"
+description: "Cara ngeblog enak pakai tema Jekyll di Github Pages."
+author: "Wahyudi"
+email: "bezimeni.id@gmail.com"
 version: "3.0.0"
 
 # ====== URL & BASEURL ======
@@ -14,8 +14,8 @@ version: "3.0.0"
 # - GitHub Pages repo: baseurl: "/blogjak-theme"
 # - Root domain:       baseurl: ""
 # - Subfolder:         baseurl: "/nama-folder"
-url: "https://username.github.io"
-baseurl: "/blogjak-theme-v3"
+url: "https://blogjake.github.io"
+baseurl: ""
 
 # ====== Build Settings ======
 markdown: kramdown
