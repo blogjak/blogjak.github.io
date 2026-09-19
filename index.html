@@ -1,0 +1,121 @@
+---
+layout: default
+title: Beranda
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>{{ site.title }} <span style="white-space:nowrap;">Versi 3</span></h1>
+    <p>{{ site.description }}</p>
+  </div>
+</section>
+
+<div class="container">
+  {% if paginator.posts.size > 0 %}
+    <div class="gallery-grid">
+      {% for post in paginator.posts %}
+        <article class="card">
+          <a href="{{ post.url | relative_url }}" class="card-image">
+            {% if post.image %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
+            {% else %}
+              <div class="placeholder"><i class="fa-solid fa-image"></i></div>
+            {% endif %}
+            {% if post.categories.first %}
+              <span class="card-category">{{ post.categories.first }}</span>
+            {% endif %}
+          </a>
+
+          <div class="card-body">
+            <div class="card-meta">
+              <span><i class="fa-regular fa-calendar"></i>{{ post.date | date: "%d %b %Y" }}</span>
+              <span><i class="fa-regular fa-clock"></i>
+                {% assign words = post.content | number_of_words %}
+                {% if words < 360 %}1 mnt{% else %}{{ words | divided_by: 180 }} mnt{% endif %}
+              </span>
+            </div>
+
+            <h3 class="card-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+
+            <p class="card-excerpt">
+              {{ post.description | default: post.excerpt | strip_html | truncatewords: 22 }}
+            </p>
+
+            <div class="card-footer">
+              <a href="{{ post.url | relative_url }}" class="card-readmore">
+                Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% if paginator.total_pages > 1 %}
+    <nav class="pagination" aria-label="Navigasi halaman">
+      {% assign cur = paginator.page %}
+      {% assign total = paginator.total_pages %}
+      {% assign last_url = site.paginate_path | replace: ':num', total %}
+
+      {# First #}
+      {% if cur == 1 %}
+        <span class="disabled" aria-disabled="true"><i class="fa-solid fa-angles-left"></i></span>
+      {% else %}
+        <a href="{{ '/' | relative_url }}" aria-label="Halaman pertama"><i class="fa-solid fa-angles-left"></i></a>
+      {% endif %}
+
+      {# Previous #}
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" aria-label="Sebelumnya"><i class="fa-solid fa-angle-left"></i></a>
+      {% else %}
+        <span class="disabled" aria-disabled="true"><i class="fa-solid fa-angle-left"></i></span>
+      {% endif %}
+
+      {# Numbers #}
+      {% for page_num in (1..total) %}
+        {% assign diff = page_num | minus: cur | abs %}
+        {% if page_num == 1 or page_num == total or diff <= 1 %}
+          {% if page_num == cur %}
+            <span class="current page-num {% if page_num == 1 %}first{% endif %} {% if page_num == total %}last{% endif %}">{{ page_num }}</span>
+          {% elsif page_num == 1 %}
+            <a class="page-num first" href="{{ '/' | relative_url }}">{{ page_num }}</a>
+          {% elsif page_num == total %}
+            <a class="page-num last" href="{{ last_url | relative_url }}">{{ page_num }}</a>
+          {% else %}
+            <a class="page-num" href="{{ site.paginate_path | replace: ':num', page_num | relative_url }}">{{ page_num }}</a>
+          {% endif %}
+        {% elsif diff == 2 %}
+          <span class="ellipsis">…</span>
+        {% endif %}
+      {% endfor %}
+
+      {# Next #}
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" aria-label="Selanjutnya"><i class="fa-solid fa-angle-right"></i></a>
+      {% else %}
+        <span class="disabled" aria-disabled="true"><i class="fa-solid fa-angle-right"></i></span>
+      {% endif %}
+
+      {# Last #}
+      {% if cur == total %}
+        <span class="disabled" aria-disabled="true"><i class="fa-solid fa-angles-right"></i></span>
+      {% else %}
+        <a href="{{ last_url | relative_url }}" aria-label="Halaman terakhir"><i class="fa-solid fa-angles-right"></i></a>
+      {% endif %}
+    </nav>
+
+    <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:16px;">
+      Halaman {{ paginator.page }} dari {{ paginator.total_pages }} — Total {{ paginator.total_posts }} artikel
+    </p>
+    {% endif %}
+
+  {% else %}
+    <div class="empty-state">
+      <i class="fa-regular fa-folder-open"></i>
+      <h2>Belum Ada Artikel</h2>
+      <p>Tambahkan berkas Markdown di folder <code>_posts/</code> untuk mulai menulis.</p>
+    </div>
+  {% endif %}
+</div>

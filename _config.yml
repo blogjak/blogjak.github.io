@@ -1,0 +1,114 @@
+# ============================================
+# Blogjak Theme Versi 3.0 — Konfigurasi Jekyll
+# ============================================
+
+title: "Blogjak Theme"
+tagline: "Versi 3 - Pure Markdown Blogging Platform"
+description: "Tema Jekyll native lengkap dengan dark mode, gallery grid, search, related posts, kategori, tag, dan SEO."
+author: "Blogjak"
+email: "hello@blogjak.dev"
+version: "3.0.0"
+
+# ====== URL & BASEURL ======
+# Sesuaikan dengan deployment Anda:
+# - GitHub Pages repo: baseurl: "/blogjak-theme"
+# - Root domain:       baseurl: ""
+# - Subfolder:         baseurl: "/nama-folder"
+url: "https://username.github.io"
+baseurl: "/blogjak-theme-v3"
+
+# ====== Build Settings ======
+markdown: kramdown
+highlighter: rouge
+# PERUBAHAN v3.0: permalink tanpa tanggal & tag
+permalink: /:categories/:title/
+timezone: Asia/Jakarta
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+# ====== Pagination ======
+paginate: 6
+paginate_path: "/page/:num/"
+
+# ====== Plugins ======
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+
+# ====== Language & SEO ======
+lang: id_ID
+logo: "/assets/images/logo.png"
+
+twitter:
+  username: blogjak
+  card: summary_large_image
+
+social:
+  name: Blogjak Theme
+  links:
+    - https://github.com/blogjak
+    - https://twitter.com/blogjak
+
+# ====== Search Engine Verification ======
+google_site_verification: ""
+bing_site_verification: ""
+yandex_site_verification: ""
+
+# ====== Search ======
+search:
+  enabled: true
+  placeholder: "Cari artikel..."
+  max_results: 10
+
+# ====== Related Posts ======
+related:
+  enabled: true
+  count: 3
+
+# ====== Defaults ======
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      sitemap: true
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# ====== Social Links (footer) ======
+# PERUBAHAN v3.0: pindah dari `social:` ke `social_links:`
+# Kosongkan ("") untuk menyembunyikan ikon
+social_links:
+  github: "https://github.com/blogjak"
+  twitter: "https://twitter.com/blogjak"
+  facebook: "https://facebook.com/blogjak"
+  instagram: "https://instagram.com/blogjak"
+  youtube: "https://youtube.com/@blogjak"
+  linkedin: "https://linkedin.com/in/blogjak"
+  tiktok: ""
+  telegram: ""
+  whatsapp: ""
+  pinterest: ""
+  reddit: ""
+  discord: ""
+  medium: ""
+  devto: ""
+
+# ====== Exclude ======
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - LICENSE

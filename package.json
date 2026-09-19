@@ -1,0 +1,14 @@
+{
+  "name": "blogjak-theme",
+  "version": "3.0.0",
+  "description": "Blogjak Theme — Jekyll native theme",
+  "private": true,
+  "scripts": {
+    "taxonomies": "node scripts/generate-taxonomies.js",
+    "serve": "bundle exec jekyll serve --baseurl \"\"",
+    "build": "bundle exec jekyll build"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}

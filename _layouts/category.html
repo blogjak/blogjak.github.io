@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<div class="container">
+  <header class="post-header">
+    <div class="post-meta-top">
+      <span class="post-category">Kategori</span>
+    </div>
+    <h1 class="post-title">{{ page.category_name | default: page.title }}</h1>
+    <p class="post-description">
+      {{ site.categories[page.category_name] | size }} artikel dalam kategori ini.
+    </p>
+  </header>
+
+  {% assign cat_posts = site.categories[page.category_name] %}
+  {% if cat_posts.size > 0 %}
+    <div class="gallery-grid">
+      {% for post in cat_posts %}
+        <article class="card">
+          <a href="{{ post.url | relative_url }}" class="card-image">
+            {% if post.image %}
+              <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
+            {% else %}
+              <div class="placeholder"><i class="fa-solid fa-newspaper"></i></div>
+            {% endif %}
+            {% if post.categories.first %}
+              <span class="card-category">{{ post.categories.first }}</span>
+            {% endif %}
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span><i class="fa-regular fa-calendar"></i> {{ post.date | date: "%d %b %Y" }}</span>
+            </div>
+            <h3 class="card-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <p class="card-excerpt">
+              {{ post.description | default: post.excerpt | strip_html | truncatewords: 22 }}
+            </p>
+            <div class="card-footer">
+              <a href="{{ post.url | relative_url }}" class="card-readmore">
+                Baca <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <h2>Tidak Ada Artikel</h2>
+      <p>Belum ada artikel dalam kategori ini.</p>
+    </div>
+  {% endif %}
+
+  <div class="back-home">
+    <a href="{{ '/categories/' | relative_url }}" class="btn btn-primary">
+      <i class="fa-solid fa-arrow-left"></i> Lihat Semua Kategori
+    </a>
+  </div>
+</div>
