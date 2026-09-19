@@ -14,7 +14,7 @@ version: "3.0.0"
 # - GitHub Pages repo: baseurl: "/blogjak-theme"
 # - Root domain:       baseurl: ""
 # - Subfolder:         baseurl: "/nama-folder"
-url: "https://blogjake.github.io"
+url: "https://blogjak.github.io"
 baseurl: ""
 
 # ====== Build Settings ======
